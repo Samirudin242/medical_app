@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Rumah Sakit Pusat Pertamina",
+        "location": "Jl. Kyai Maja No.43, RT.4/RW.8, Gunung, Kec. Kby. Baru, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12120"
+    },
+    {
+        "name": "RS Yadika Kebayoran Lama",
+        "location": "Jl. Ciputat Raya No.5, RT.13/RW.1, Kby. Lama Sel., Kec. Kby. Lama, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12240"
+    },
+    {
+        "name": "Rumah Sakit Medika Permata Hijau",
+        "location": "Jl. Raya Kby. Lama No.64, RT.6/RW.8, Sukabumi Sel., Kec. Kb. Jeruk, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11560"
+    },
+    {
+        "name": "Rumah Sakit Royal Taruma",
+        "location": "Jl. Daan Mogot Kedaung No.34, RT.8/RW.1, Kali Angke, Kec. Grogol petamburan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11470"
+    },
+    {
+        "name": "Rumah Sakit Puri Medika",
+        "location": "Jalan Sungai Bambu Raya No.5, RT.4/RW.9, Tanjung Priok, RT.5/RW.9, RT.5/RW.9, Sungai Bambu, Tj. Priok, Kota Jkt Utara, Daerah Khusus Ibukota Jakarta 14320"
+    },
+    {
+        "name": "RS Islam Jakarta Sukapura",
+        "location": "Jl. Tipar Cakung No.5, RT.5/RW.5, Sukapura, Kec. Cilincing, Kota Jkt Utara, Daerah Khusus Ibukota Jakarta 14140"
+    }
+    
+]

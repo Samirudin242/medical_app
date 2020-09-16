@@ -1,0 +1,86 @@
+[
+    {
+        "HospitalId": 1,
+        "DoctorId": 1
+    },
+    {
+        "HospitalId": 2,
+        "DoctorId": 1
+    },
+    {
+        "HospitalId": 1,
+        "DoctorId": 4
+    },
+    {
+        "HospitalId": 2,
+        "DoctorId": 10
+    },
+    {
+        "HospitalId": 1,
+        "DoctorId": 10
+    },
+    {
+        "HospitalId": 2,
+        "DoctorId": 7
+    },
+    {
+        "HospitalId": 1,
+        "DoctorId": 7
+    },
+    {
+        "HospitalId": 2,
+        "DoctorId": 13
+    },
+    {
+        "HospitalId": 3,
+        "DoctorId": 2
+    },
+    {
+        "HospitalId": 4,
+        "DoctorId": 2
+    },
+    {
+        "HospitalId": 3,
+        "DoctorId": 5
+    },
+    {
+        "HospitalId": 3,
+        "DoctorId":  8
+    },
+    {
+        "HospitalId": 4,
+        "DoctorId": 11
+    },
+    {
+        "HospitalId": 4,
+        "DoctorId": 14
+    },
+    {
+        "HospitalId": 5,
+        "DoctorId": 3
+    },
+    {
+        "HospitalId": 6,
+        "DoctorId": 3
+    },
+    {
+        "HospitalId": 5,
+        "DoctorId": 6
+    },
+    {
+        "HospitalId": 5,
+        "DoctorId": 9
+    },
+    {
+        "HospitalId": 6,
+        "DoctorId": 12
+    },
+    {
+        "HospitalId": 6,
+        "DoctorId": 15
+    },
+    {
+        "HospitalId": 5,
+        "DoctorId": 15
+    }
+]
