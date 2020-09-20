@@ -48,7 +48,6 @@ export default new Vuex.Store({
         });
     },
     getDataByField(context, payload) {
-      console.log("commit store");
       Axios({
         method: "POST",
         url: `http://localhost:3000/doctors/field`,

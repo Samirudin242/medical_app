@@ -95,6 +95,7 @@
 </template>
 
 <script>
+import { getAbilities, getDisieases } from "../helper/DoctorFunction.js";
 export default {
   data() {
     return {
@@ -103,44 +104,16 @@ export default {
       diseases: [],
     };
   },
-  mounted() {
-    // console.log(this.$store.state.schedule, "detail");
-  },
   computed: {
     doctor() {
       console.log(this.$store.state.doctorId, "detail");
       let datas = this.$store.state.doctorId;
       let doctorAbility = [];
       let doctorDisease = [];
-      // console.log(datas.ability);
-      function getAbilities(ability) {
-        if (ability !== "") {
-          for (let i = 0; i < ability.length; i++) {
-            if (ability[i] === ",") {
-              doctorAbility = ability.split(",");
-              return;
-            }
-          }
-        } else if (ability !== "") {
-          doctorAbility.push(ability);
-        }
+      if (datas.length > 0) {
+        getAbilities(datas.ability);
+        getDisieases(datas.disease);
       }
-
-      function getDisieases(disease) {
-        if (disease !== "") {
-          for (let i = 0; i < disease.length; i++) {
-            if (disease[i] === ",") {
-              doctorDisease = disease.split(",");
-              return;
-            }
-          }
-        } else if (disease !== "") {
-          doctorDisease.push(disease);
-        }
-      }
-
-      getAbilities(datas.ability);
-      getDisieases(datas.disease);
       this.diseases = doctorDisease;
       this.abilities = doctorAbility;
       return datas;
