@@ -28,7 +28,10 @@
       </div>
     </router-link>
     <router-link id="router" v-bind:to="{ name: 'DoctorList' }">
-      <div class="doctor_card" @click="getData('Dokter Spesialis Kulit dan Kelamin')">
+      <div
+        class="doctor_card"
+        @click="getData('Dokter Spesialis Kulit dan Kelamin')"
+      >
         <div class="doctor_card_text">
           <h3 class="text1">Dokter Spesialis Kulit dan Kelamin</h3>
           <p class="text2">Dermatologi</p>
@@ -57,9 +60,9 @@ export default {
   methods: {
     getData(field) {
       this.$store.dispatch("setField", { field });
-      this.$store.dispatch("getDataByField", { field });
-    }
-  }
+      this.$store.dispatch("getDataByField");
+    },
+  },
 };
 </script>
 

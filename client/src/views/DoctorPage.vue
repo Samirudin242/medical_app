@@ -39,7 +39,7 @@
     </div>
     <h3>Spesialisasi Dokter</h3>
     <DoctorCompponent />
-    <ListDoctorCard />
+    <!-- <ListDoctorCard /> -->
     <router-view />
   </div>
 </template>
@@ -62,12 +62,15 @@ export default {
   watch: {
     cityName: function() {
       let city = this.cityName;
+      // console.log(city, "city component «««««");
       this.$store.dispatch("setCity", { city });
+      // console.log(this.$store.state.city, "city store");
       this.$store.dispatch("getDoctorData", { city });
+      // console.log(this.$store.state.doctors, "data from view");
     }
   },
   methods: {
-    setCity(cityName) {
+    setCity(city) {
       this.$store.dispatch("setCity", { city });
     }
   },

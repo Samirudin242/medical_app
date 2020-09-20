@@ -2,16 +2,16 @@ const { Doctor, City, Field, Hospital, HospitalDoctor } = require("../models");
 
 class DoctorController {
   static getAllData(req, res) {
-    console.log("masuk ««««««««")
+    console.log("masuk ««««««««");
     Doctor.findAll({
       include: [City, Field, Hospital],
     })
-    .then(data => {
-      res.status(200).json(data)
-    })
-    .catch(err => {
-      console.log(err)
-    })
+      .then((data) => {
+        res.status(200).json(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   static getData(req, res) {
@@ -26,6 +26,30 @@ class DoctorController {
           }
         });
         res.status(200).json(doctor);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  static getDataByField(req, res) {
+    let obj = {
+      field: req.body.field,
+      city: req.body.city,
+    };
+    Doctor.findAll({
+      include: [City, Field, Hospital],
+    })
+      .then((datas) => {
+        console.log(obj.field, "<<<<<");
+        console.log(obj.city, "<<<<<");
+        let doctorData = [];
+        datas.forEach((data) => {
+          if (data.City.name === obj.city && data.Field.name === obj.field) {
+            doctorData.push(data);
+          }
+        });
+        res.status(200).json(doctorData);
       })
       .catch((err) => {
         console.log(err);

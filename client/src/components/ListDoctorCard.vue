@@ -21,51 +21,16 @@
           </div>
         </div>
       </router-link>
-      <!-- <div class="card_list_doctor">
-        <div>
-          <p class="name_card">dr. Agieta Zulkifli, SpTHT-KL</p>
-          <div class="hospital">
-            <i class="fas fa-clinic-medical icon_hopital"></i>
-            <p>RS Pusat Pertamina</p>
-          </div>
-          <div class="schedule">
-            <i class="far fa-clock icon_clock"></i>
-            <p>Praktik hari ini (10.00 - 12.00)</p>
-          </div>
-        </div>
-        <i class="fas fa-user-circle icon_circle"></i>
-        <div class="online">
-          <i class="far fa-check-circle icon_check"></i>
-          <p>Bisa buat janji online</p>
-        </div>
-      </div>
-      <div class="card_list_doctor">
-        <div>
-          <p class="name_card">dr. Agieta Zulkifli, SpTHT-KL</p>
-          <div class="hospital">
-            <i class="fas fa-clinic-medical icon_hopital"></i>
-            <p>RS Pusat Pertamina</p>
-          </div>
-          <div class="schedule">
-            <i class="far fa-clock icon_clock"></i>
-            <p>Praktik hari ini (10.00 - 12.00)</p>
-          </div>
-        </div>
-        <i class="fas fa-user-circle icon_circle"></i>
-        <div class="online">
-          <i class="far fa-check-circle icon_check"></i>
-          <p>Bisa buat janji online</p>
-        </div>
-      </div>-->
     </div>
     <router-view />
   </div>
 </template>
 
 <script>
+import Axios from "axios";
 export default {
   props: {
-    cityName: String
+    cityName: String,
   },
   data() {
     return {};
@@ -73,15 +38,16 @@ export default {
   watch: {
     cityName: function() {
       let city = this.cityName;
+      this.$store.dispatch("setCity", { city });
       this.$store.dispatch("getDoctorData", { city });
       let field = this.$store.state.field;
-      this.$store.dispatch("getDataByField", { field });
-    }
+      this.$store.dispatch("getDataByField");
+    },
   },
   computed: {
     doctors() {
       let datas = this.$store.state.doctor;
-      datas.forEach(data => {
+      datas.forEach((data) => {
         let days = data.schedule;
         let day = new Date().getDay();
         let dayName = "";
@@ -118,16 +84,15 @@ export default {
         getDay(days);
         data.schedule = dayOutput;
         this.$store.dispatch("setSchedule", { dayOutput });
-        // console.log(dayOutpu
       });
       return datas;
-    }
+    },
   },
   methods: {
     setData(id) {
       this.$store.dispatch("getDataById", { id });
-    }
-  }
+    },
+  },
 };
 </script>
 

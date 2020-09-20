@@ -63,6 +63,8 @@ export default {
       let city = this.cityName;
       this.$store.dispatch("setCity", { city });
       this.$store.dispatch("getDoctorData", { city });
+      let field = this.$store.state.field;
+      this.$store.dispatch("getDataByField");
     },
   },
   methods: {

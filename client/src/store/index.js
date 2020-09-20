@@ -48,14 +48,21 @@ export default new Vuex.Store({
         });
     },
     getDataByField(context, payload) {
-      let doctorField = [];
-      let datas = this.state.doctors;
-      datas.forEach((data) => {
-        if (data.Field.name === payload.field) {
-          doctorField.push(data);
-        }
-      });
-      context.commit("SET_DATA_FIELD", doctorField);
+      console.log("commit store");
+      Axios({
+        method: "POST",
+        url: `http://localhost:3000/doctors/field`,
+        data: {
+          field: this.state.field,
+          city: this.state.city,
+        },
+      })
+        .then((data) => {
+          context.commit("SET_DATA_FIELD", data.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
     getDataById(context, payload) {
       Axios({
