@@ -2,7 +2,7 @@
   <div>
     <div v-for="doctor in doctors" :key="doctor.id">
       <router-link id="router" v-bind:to="{ name: 'DoctorDetail' }">
-        <div class="card_list_doctor">
+        <div class="card_list_doctor" @click="setDataDoctor(doctor.id)">
           <div>
             <p class="name_card">{{ doctor.name }}</p>
             <div class="hospital">
@@ -86,6 +86,11 @@ export default {
         this.$store.dispatch("setSchedule", { dayOutput });
       });
       return datas;
+    }
+  },
+  methods: {
+    setDataDoctor(id) {
+      this.$store.dispatch("getDataById", { id });
     }
   }
 };

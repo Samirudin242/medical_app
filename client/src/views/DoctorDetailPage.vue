@@ -38,7 +38,7 @@
         <div class="location_container_item">
           <div
             class="location_container_text"
-            v-for="hospital in doctor.Hospitals"
+            v-for="hospital in doctor[0].Hospitals"
             :key="hospital.id"
           >
             <p>{{ hospital.name }}</p>

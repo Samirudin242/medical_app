@@ -19,10 +19,10 @@ export default new Vuex.Store({
     },
     SET_DATA_FIELD(state, payload) {
       state.doctor = payload;
-      state.doctorId = payload;
+      // state.doctorId = payload;
     },
     SET_DATA_ID(state, payload) {
-      state.doctorId = payload;
+      state.doctorId.push(payload);
     },
     SET_FIELD(state, payload) {
       state.field = payload;
@@ -75,6 +75,22 @@ export default new Vuex.Store({
         .catch((err) => {
           console.log(err);
         });
+    },
+    getAllData(context, payload) {
+      Axios({
+        method: "GET",
+        url: `http://localhost:3000/doctors`,
+      }).then((data) => {
+        let datas = data.data;
+        let doctorDatas = [];
+        let regex = new RegExp(`${payload.name.toLowerCase()}`);
+        datas.forEach((data) => {
+          if (data.name.toLowerCase().match(regex)) {
+            doctorDatas.push(data);
+          }
+        });
+        context.commit("SET_DATA_FIELD", doctorDatas);
+      });
     },
     setField(context, payload) {
       context.commit("SET_FIELD", payload.field);

@@ -38,8 +38,8 @@
       </div>
     </div>
     <h3>Spesialisasi Dokter</h3>
-    <DoctorCompponent />
-    <!-- <ListDoctorCard /> -->
+    <DoctorCompponent v-if="inputSearch.length === 0" />
+    <ListDoctorCard v-if="inputSearch.length > 0" />
     <router-view />
   </div>
 </template>
@@ -62,11 +62,12 @@ export default {
   watch: {
     cityName: function() {
       let city = this.cityName;
-      // console.log(city, "city component «««««");
       this.$store.dispatch("setCity", { city });
-      // console.log(this.$store.state.city, "city store");
       this.$store.dispatch("getDoctorData", { city });
-      // console.log(this.$store.state.doctors, "data from view");
+    },
+    inputSearch: function() {
+      let name = this.inputSearch;
+      this.$store.dispatch("getAllData", { name });
     }
   },
   methods: {
@@ -77,7 +78,6 @@ export default {
   created() {
     let city = this.cityName;
     this.$store.dispatch("getDoctorData", { city });
-    // console.log(this.$store.state.doctors, "<<<<<<");
   }
 };
 </script>
