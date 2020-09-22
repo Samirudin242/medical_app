@@ -2,7 +2,7 @@
   <div>
     <div v-for="doctor in doctors" :key="doctor.id">
       <router-link id="router" v-bind:to="{ name: 'DoctorDetail' }">
-        <div class="card_list_doctor" @click="setData(doctor.id)">
+        <div class="card_list_doctor">
           <div>
             <p class="name_card">{{ doctor.name }}</p>
             <div class="hospital">
@@ -30,7 +30,7 @@
 import Axios from "axios";
 export default {
   props: {
-    cityName: String,
+    cityName: String
   },
   data() {
     return {};
@@ -42,12 +42,12 @@ export default {
       this.$store.dispatch("getDoctorData", { city });
       let field = this.$store.state.field;
       this.$store.dispatch("getDataByField");
-    },
+    }
   },
   computed: {
     doctors() {
       let datas = this.$store.state.doctor;
-      datas.forEach((data) => {
+      datas.forEach(data => {
         let days = data.schedule;
         let day = new Date().getDay();
         let dayName = "";
@@ -86,13 +86,8 @@ export default {
         this.$store.dispatch("setSchedule", { dayOutput });
       });
       return datas;
-    },
-  },
-  methods: {
-    setData(id) {
-      this.$store.dispatch("getDataById", { id });
-    },
-  },
+    }
+  }
 };
 </script>
 

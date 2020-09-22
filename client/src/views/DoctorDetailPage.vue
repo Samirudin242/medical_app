@@ -10,8 +10,8 @@
         </div>
         <div class="name_description">
           <div class="name_description_text">
-            <h3>{{ doctor.name }}</h3>
-            <p class="name_description_text_gender">{{ doctor.gender }}</p>
+            <h3>{{ doctor[0].name }}</h3>
+            <p class="name_description_text_gender">{{ doctor[0].gender }}</p>
           </div>
           <div class="name_description_icon">
             <i class="fas fa-user-circle icon_circle"></i>
@@ -22,7 +22,7 @@
         <p>Jadwal Praktik Terdekat</p>
         <div class="schedule_container_text">
           <ul>
-            <li>{{ doctor.Hospitals[0].name }}</li>
+            <li>{{ doctor[0].Hospitals[0].name }}</li>
             <li>{{ day }}</li>
             <!-- <li>10.00 - 12.00</li> -->
           </ul>
@@ -44,22 +44,10 @@
             <p>{{ hospital.name }}</p>
             <div class="location_container_icon">
               <i class="fas fa-map-marker-alt"></i>
-              <p>
-                {{ hospital.location }}
-              </p>
+              <p>{{ hospital.location }}</p>
               <i class="fas fa-angle-right"></i>
             </div>
           </div>
-          <!-- <div class="location_container_text">
-            <p>Rumah Sakit Pertamina</p>
-            <div class="location_container_icon">
-              <i class="fas fa-map-marker-alt"></i>
-              <p>
-                jl. Kyai Maja No. 43, Rt 4 Rw 8, Gunung, Kebayoran Baru Jakarta
-              </p>
-              <i class="fas fa-angle-right"></i>
-            </div>
-          </div> -->
           <div class="location_container_button">
             <p>Lihat Semua</p>
             <i class="fas fa-angle-right"></i>
@@ -95,30 +83,52 @@
 </template>
 
 <script>
-import { getAbilities, getDisieases } from "../helper/DoctorFunction.js";
 export default {
   data() {
     return {
       day: this.$store.state.schedule,
       abilities: [],
-      diseases: [],
+      diseases: []
     };
   },
   computed: {
     doctor() {
-      console.log(this.$store.state.doctorId, "detail");
       let datas = this.$store.state.doctorId;
       let doctorAbility = [];
       let doctorDisease = [];
+      function getAbilities(ability) {
+        if (ability !== "") {
+          for (let i = 0; i < ability.length; i++) {
+            if (ability[i] === ",") {
+              doctorAbility = ability.split(",");
+              return;
+            }
+          }
+        } else if (ability !== "") {
+          doctorAbility.push(ability);
+        }
+      }
+      function getDisieases(disease) {
+        if (disease !== "") {
+          for (let i = 0; i < disease.length; i++) {
+            if (disease[i] === ",") {
+              doctorDisease = disease.split(",");
+              return;
+            }
+          }
+        } else if (disease !== "") {
+          doctorDisease.push(disease);
+        }
+      }
       if (datas.length > 0) {
-        getAbilities(datas.ability);
-        getDisieases(datas.disease);
+        getAbilities(datas[0].ability);
+        getDisieases(datas[0].disease);
       }
       this.diseases = doctorDisease;
       this.abilities = doctorAbility;
       return datas;
-    },
-  },
+    }
+  }
 };
 </script>
 

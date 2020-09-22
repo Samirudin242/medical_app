@@ -19,6 +19,7 @@ export default new Vuex.Store({
     },
     SET_DATA_FIELD(state, payload) {
       state.doctor = payload;
+      state.doctorId = payload;
     },
     SET_DATA_ID(state, payload) {
       state.doctorId = payload;
