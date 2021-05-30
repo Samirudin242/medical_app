@@ -2,20 +2,22 @@
   <div class="container">
     <div class="page_container">
       <div class="name_container">
-        <div class="name_icon">
+        <div class="icon_back">
           <router-link id="router" v-bind:to="{ name: 'DoctorList' }">
             <i class="fas fa-arrow-left"></i>
           </router-link>
-          <i class="fas fa-share-alt"></i>
         </div>
         <div class="name_description">
           <div class="name_description_text">
             <h3>{{ doctor[0].name }}</h3>
             <p class="name_description_text_gender">{{ doctor[0].gender }}</p>
           </div>
-          <div class="name_description_icon">
-            <i class="fas fa-user-circle icon_circle"></i>
-          </div>
+        </div>
+        <div class="name_description_icon">
+          <i class="fas fa-user-circle icon_circle"></i>
+        </div>
+        <div class="icon_share">
+          <i class="fas fa-share-alt"></i>
         </div>
       </div>
       <div class="schedule_container">
@@ -24,9 +26,10 @@
           <ul>
             <li>{{ doctor[0].Hospitals[0].name }}</li>
             <li>{{ day }}</li>
-            <!-- <li>10.00 - 12.00</li> -->
           </ul>
-          <p>BUAT JANJI</p>
+          <router-link id="router" v-bind:to="{ name: 'Appoitment' }">
+            <p class="button-appoitment">BUAT JANJI</p>
+          </router-link>
           <div class="schedule_container_icon">
             <p>Lihat Semua</p>
             <i class="fas fa-angle-right"></i>
@@ -88,11 +91,12 @@ export default {
     return {
       day: this.$store.state.schedule,
       abilities: [],
-      diseases: []
+      diseases: [],
     };
   },
   computed: {
     doctor() {
+      // console.log(this.$store.state.doctorId, "«««««");
       let datas = this.$store.state.doctorId;
       let doctorAbility = [];
       let doctorDisease = [];
@@ -127,24 +131,31 @@ export default {
       this.diseases = doctorDisease;
       this.abilities = doctorAbility;
       return datas;
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style scoped>
 .container {
   background-color: #f6f7f8;
-  min-height: 100vh;
+  min-height: 100%;
   margin: 0;
   padding: 0;
   width: 100%;
 }
 
+.page_container {
+  margin: 0 37vw;
+}
+
 .name_container {
   background-color: white;
-  width: 435px;
+  width: 500px;
   box-shadow: 1px 1px 1px rgb(230, 226, 226);
+  display: grid;
+  grid-template-columns: 15% 40% 20% 20%;
+  height: 130px;
 }
 
 .name_icon {
@@ -153,18 +164,27 @@ export default {
   color: #8b8c8d;
   cursor: pointer;
 }
-.fas {
-  margin: 15px 15px 0px 15px;
+
+.fa-arrow-left {
+  font-size: 27px;
+  margin: 27px 0px 3px 20px;
+}
+
+.fa-share-alt {
+  margin: 27px 0px 3px 80px;
+  font-size: 22px;
+  color: #aeb2b6;
 }
 
 .name_description {
   display: flex;
+  margin-top: 18px;
 }
 
 .name_description_text {
-  margin: 0px 15px;
-  line-height: 10px;
+  line-height: 31px;
 }
+
 h3 {
   color: #085b9c;
 }
@@ -174,9 +194,13 @@ h3 {
 }
 .name_description_icon {
   color: #aeb2b6;
-  font-size: 60px;
   margin-left: 20px;
   margin-bottom: 10px;
+}
+.icon_circle {
+  font-size: 70px;
+  margin-right: 5px;
+  margin-top: 20px;
 }
 #router {
   text-decoration: none;
@@ -184,10 +208,11 @@ h3 {
 }
 
 .schedule_container {
-  margin: 0px 15px;
+  margin: 20px 15px 20px 23px;
 }
 .schedule_container > p {
   color: #8b8c8d;
+  margin-bottom: 10px;
 }
 
 .schedule_container_text {
@@ -195,6 +220,7 @@ h3 {
   padding: 15px;
   border-radius: 5px;
   box-shadow: 1px 1px 2px rgb(230, 228, 228);
+  width: 450px;
 }
 
 .schedule_container_text > ul {
@@ -202,6 +228,7 @@ h3 {
   line-height: 25px;
   margin-top: 0px;
   padding: 0;
+  margin-bottom: 5px;
 }
 .schedule_container_text > ul > li:nth-child(1) {
   color: #085b9c;
@@ -212,45 +239,55 @@ h3 {
 .schedule_container_text > ul > li:nth-child(3) {
   color: #aeb2b6;
 }
-.schedule_container_text > p {
+.button-appoitment {
   background-color: #0a851a;
   color: white;
   padding: 10px;
   text-align: center;
   border-radius: 4px;
   cursor: pointer;
+  text-decoration: none;
 }
 .schedule_container_icon {
   display: flex;
   justify-content: space-between;
   border-top: 2px solid #e2e5e7;
   cursor: pointer;
+  margin-top: 15px;
 }
 .schedule_container_icon > i {
   color: #8b8c8d;
   font-size: 22px;
+  margin-top: 3px;
+  margin-right: 31px;
 }
 .schedule_container_icon > p {
   color: #1ec27e;
   margin-bottom: 0px;
+  margin-top: 3px;
 }
 .location_container {
-  margin: 0px 15px;
+  margin: 20px 15px 20px 23px;
 }
+
 .location_container > p {
   color: #8b8c8d;
+  margin-bottom: 10px;
 }
 .location_container_item {
   background-color: white;
   padding: 15px;
   box-shadow: 1px 1px 2px rgb(230, 228, 228);
   border-radius: 5px;
+  width: 450px;
 }
 .location_container_text {
   border-bottom: 2px solid #e2e6eb;
+  margin-bottom: 5px;
 }
 .location_container_text > p {
   color: #085b9c;
+  margin-bottom: 5px;
 }
 .location_container_icon {
   display: grid;
@@ -258,6 +295,7 @@ h3 {
   margin: 0px;
   color: #8b8c8d;
   margin-bottom: 10px;
+  margin-top: 10px;
 }
 .location_container_icon > p {
   margin: 0px;
@@ -280,19 +318,22 @@ h3 {
   color: #8b8c8d;
   font-size: 22px;
   justify-content: center;
+  margin-right: 17px;
 }
 
 .ability_container {
-  margin: 0px 15px;
+  margin: 20px 15px 20px 23px;
 }
 .ability_container > p {
   color: #8b8c8d;
+  margin-bottom: 10px;
 }
 .ability_container_text {
   background-color: white;
   padding: 0px 15px 10px;
   border-radius: 5px;
   box-shadow: 1px 1px 5px rgb(221, 202, 202);
+  width: 450px;
 }
 .ability_container_text > ul {
   list-style-type: none;
@@ -318,7 +359,14 @@ h3 {
   font-size: 22px;
   align-self: center;
   justify-self: center;
-  margin-right: 25px;
+  margin-right: 33px;
   margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+@media (max-width: 800px) {
+  .page_container {
+    margin: 0 1vw;
+  }
 }
 </style>

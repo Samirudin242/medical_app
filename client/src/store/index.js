@@ -12,6 +12,8 @@ export default new Vuex.Store({
     schedule: "",
     city: "Jakarta Selatan",
     field: "",
+    token: "",
+    users: [],
   },
   mutations: {
     SET_DATA(state, payload) {
@@ -19,10 +21,9 @@ export default new Vuex.Store({
     },
     SET_DATA_FIELD(state, payload) {
       state.doctor = payload;
-      // state.doctorId = payload;
     },
     SET_DATA_ID(state, payload) {
-      state.doctorId.push(payload);
+      state.doctorId.splice(0, 1, payload);
     },
     SET_FIELD(state, payload) {
       state.field = payload;
@@ -32,6 +33,12 @@ export default new Vuex.Store({
     },
     SET_CITY(state, payload) {
       state.city = payload;
+    },
+    SET_TOKEN(state, payload) {
+      state.token = payload;
+    },
+    SET_DATA_USERS(state, payload) {
+      state.users = payload;
     },
   },
   actions: {
@@ -100,6 +107,12 @@ export default new Vuex.Store({
     },
     setCity(context, payload) {
       context.commit("SET_CITY", payload.city);
+    },
+    setToken(context, payload) {
+      context.commit("SET_TOKEN", payload);
+    },
+    setDataUser(context, payload) {
+      context.commit("SET_DATA_USERS", payload);
     },
   },
   modules: {},

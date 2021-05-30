@@ -5,23 +5,22 @@
   </div>
 </template>
 
-// <script>
-// import Home from "./views/Home.vue";
-// export default {
-//   components: {
-//     Home
-//   }
-// };
-//
-</script>
+<script></script>
 <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 #app {
   background-color: #dae8e0;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
   width: 100%;
   font-family: "Source Sans Pro", sans-serif;
+  box-sizing: border-box;
 }
 
 .navbar_app {

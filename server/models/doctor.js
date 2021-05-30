@@ -27,7 +27,8 @@ module.exports = (sequelize, DataTypes) => {
     Doctor.belongsTo(models.Field, {
       sourceKey: 'FieldId',
       targetKey: 'id'
-    })
+    }),
+    Doctor.hasMany(models.Schedule)
   };
   return Doctor;
 };

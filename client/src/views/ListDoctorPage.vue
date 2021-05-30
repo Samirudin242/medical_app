@@ -13,20 +13,17 @@
                 class="text_form"
                 value="Jakarta Selatan"
                 :selected="cityName === 'Jakarta Selatan'"
-                >Jakarta Selatan</option
-              >
+              >Jakarta Selatan</option>
               <option
                 class="text_form"
                 value="Jakarta Barat"
                 :selected="cityName === 'Jakarta Barat'"
-                >Jakarta Barat</option
-              >
+              >Jakarta Barat</option>
               <option
                 class="text_form"
                 value="Jakarta Utara"
                 :selected="cityName === 'Jakarta Utara'"
-                >Jakarta Utara</option
-              >
+              >Jakarta Utara</option>
             </select>
           </div>
           <i class="fas fa-angle-down arrow_right"></i>
@@ -38,9 +35,9 @@
           <p class="filter_text">Booking online</p>
         </div>
       </div>
+      <DoctorCard class="doctor_card" :cityName="cityName" />
+      <NavbarDoctor />
     </div>
-    <DoctorCard class="doctor_card" :cityName="cityName" />
-    <NavbarDoctor />
     <router-view />
   </div>
 </template>
@@ -51,11 +48,11 @@ import DoctorCard from "../components/ListDoctorCard.vue";
 export default {
   components: {
     NavbarDoctor,
-    DoctorCard,
+    DoctorCard
   },
   data() {
     return {
-      cityName: this.$store.state.city,
+      cityName: this.$store.state.city
     };
   },
   watch: {
@@ -65,13 +62,13 @@ export default {
       this.$store.dispatch("getDoctorData", { city });
       let field = this.$store.state.field;
       this.$store.dispatch("getDataByField");
-    },
+    }
   },
   methods: {
     setCity(cityName) {
       this.$store.dispatch("setCity", { city });
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -81,15 +78,18 @@ export default {
   min-height: 100vh;
   margin: 0;
   padding: 0;
-  width: 100%;
   box-sizing: border-box;
+}
+
+.doctorPage_container {
+  margin: 0 60vh;
 }
 
 .top_page {
   background-color: white;
   height: 160px;
   box-shadow: 1px 1px 4px #e0dddd;
-  width: 434px;
+  width: 500px;
 }
 
 .top1 {
@@ -101,6 +101,7 @@ export default {
 
 .form {
   padding: 0px 0px 0px 10px;
+  margin-bottom: 15px;
 }
 
 .form_city {
@@ -132,6 +133,10 @@ export default {
   color: #085b9c;
 }
 
+.form > p:nth-child(1) {
+  margin-top: 15px;
+}
+
 p {
   margin-left: 15px;
   margin-bottom: 0;
@@ -146,7 +151,7 @@ p {
 .arrow_right {
   color: #8b8c8d;
   font-size: 22px;
-  margin-top: 38px;
+  margin-top: 25px;
 }
 
 .fa-search {
@@ -154,6 +159,7 @@ p {
   font-size: 25px;
   margin-right: 10px;
   margin-left: 4cm;
+  margin-top: 15px;
 }
 
 h3 {
@@ -167,5 +173,11 @@ h3 {
 }
 .doctor_card {
   margin-top: 25px;
+}
+
+@media (max-width: 800px) {
+  .doctorPage_container {
+    margin: 0 40vw 0 0vw;
+  }
 }
 </style>

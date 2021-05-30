@@ -2,7 +2,6 @@ const { Doctor, City, Field, Hospital, HospitalDoctor } = require("../models");
 
 class DoctorController {
   static getAllData(req, res) {
-    console.log("masuk ««««««««");
     Doctor.findAll({
       include: [City, Field, Hospital],
     })
@@ -41,8 +40,6 @@ class DoctorController {
       include: [City, Field, Hospital],
     })
       .then((datas) => {
-        console.log(obj.field, "<<<<<");
-        console.log(obj.city, "<<<<<");
         let doctorData = [];
         datas.forEach((data) => {
           if (data.City.name === obj.city && data.Field.name === obj.field) {

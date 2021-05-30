@@ -1,36 +1,18 @@
 <template>
   <div>
     <div class="home_container">
+      <div class="img">
       <img
-        style="width: 8rem; height: 3rem; margin-left: 20px; margin-top: 20px"
-        src="../img/IHC_logo.png"
+        style="width: 10rem; height: 11rem; margin-left: 0px; margin-top: 25px"
+        src="../img/logo.png"
       />
-      <h2>Selamat datang di IHC Mobile</h2>
+      </div>
+      <h2>Selamat datang di THEYAKU-MED</h2>
       <p>
         Kami memberikan pelayanan komperehensif dan terpadu dengan standar
         pelayanan terakreditasi.
       </p>
-      <div class="card-home">
-        <div class="card-icon">
-          <b-icon class="icon-plus" icon="clipboard-plus" variant="light"></b-icon>
-        </div>
-        <div class="card-description">
-          <h3>Booking Cepat</h3>
-          <p>Pesan dokter langganan</p>
-        </div>
-        <i class="fas fa-angle-right card-arrow"></i>
-      </div>
-      <div class="card-home">
-        <div class="card-icon">
-          <i class="far fa-hospital icon-hospital"></i>
-        </div>
-        <div class="card-description">
-          <h3>Cari Faskes</h3>
-          <p>Rumah sakit dan klinik</p>
-        </div>
-        <i class="fas fa-angle-right card-arrow"></i>
-      </div>
-      <router-link id="router" v-bind:to="{name: 'Doctors' }">
+       <router-link id="router" v-bind:to="{ name: 'Doctors' }">
         <div class="card-home">
           <div class="card-icon">
             <i class="fas fa-stethoscope icon-docter"></i>
@@ -41,6 +23,30 @@
           </div>
           <i class="fas fa-angle-right card-arrow"></i>
         </div>
+      </router-link>
+      <router-link id="router" v-bind:to="{ name: 'Booking' }">
+      <div class="card-home">
+        <div class="card-icon">
+          <i class="fas fa-user-md icon-medic"></i>
+        </div>
+        <div class="card-description">
+          <h3>Booking Cepat</h3>
+          <p>Pesan dokter langganan</p>
+        </div>
+        <i class="fas fa-angle-right card-arrow"></i>
+      </div>
+      </router-link>
+      <router-link id="router" v-bind:to="{ name: 'Hospital' }">
+      <div class="card-home">
+        <div class="card-icon">
+          <i class="far fa-hospital icon-hospital"></i>
+        </div>
+        <div class="card-description">
+          <h3>Cari Faskes</h3>
+          <p>Rumah sakit dan klinik</p>
+        </div>
+        <i class="fas fa-angle-right card-arrow"></i>
+      </div>
       </router-link>
       <router-view />
     </div>
@@ -59,13 +65,20 @@ export default {
 
 <style scoped>
 .home_container {
-  margin: 0 15px;
+  margin: 0 37vw;
 }
+
+
+.home_container > img {
+  object-fit: cover;
+  object-position: 20% 10%;
+}
+
 h2 {
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 400;
   color: #085b9c;
-  margin-top: 40px;
+  margin-top: 0px;
 }
 
 h3 {
@@ -82,13 +95,14 @@ p {
   width: 400px;
   color: #9a9c9a;
   font-weight: 200;
+  margin: 10px 0px 10px 0px;
 }
 
-.icon-plus {
+.icon-medic {
   font-size: 30px;
   border: 3px solid #b0d2f7;
   padding: 15px;
-  border-radius: 25px;
+  border-radius: 30px;
   color: #5c9adb;
   font-weight: 500;
 }
@@ -97,7 +111,7 @@ p {
   font-size: 30px;
   border: 3px solid #9cecba;
   padding: 15px;
-  border-radius: 25px;
+  border-radius: 30px;
   color: #1d9648;
 }
 
@@ -105,7 +119,7 @@ p {
   font-size: 30px;
   border: 3px solid #9cecba;
   padding: 15px;
-  border-radius: 25px;
+  border-radius: 30px;
   color: #1d9648;
 }
 
@@ -131,7 +145,7 @@ p {
 }
 .card-description {
   line-height: 4px;
-  margin-top: 14px;
+  margin-top: 30px;
 }
 
 .card-arrow {
@@ -141,5 +155,11 @@ p {
   color: #cdd1ce;
   font-size: 23px;
   text-decoration: none;
+}
+
+@media (max-width: 800px) {
+  .home_container {
+    margin: 0 9vw;
+  }
 }
 </style>

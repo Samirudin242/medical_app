@@ -30,7 +30,7 @@
   bottom: 0;
   margin-bottom: 0;
   position: fixed;
-  width: 435px;
+  width: 500px;
   flex-wrap: wrap;
   padding: 0;
   box-shadow: 1px 1px 1px #888888;

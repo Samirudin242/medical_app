@@ -1,34 +1,29 @@
 <template>
-  <div class="container">
-    <div class="doctorPage_container">
+    <div class="booking-container">
       <div class="top_page">
         <div class="top1">
           <router-link v-bind:to="{ name: 'Home' }">
             <i class="fas fa-arrow-left arrow_left"></i>
           </router-link>
-          <div class="form" v-if="inputSearch.length === 0">
+          <div class="form">
             <div>
               <p>Dokter di sekitar</p>
-              <select v-model="cityName" class="form_city">
+              <select class="form_city">
                 <option
-                  @click="setCity('Jakarta Selatan')"
                   class="text_form"
                   value="Jakarta Selatan"
-                  :selected="cityName === 'Jakarta Selatan'"
                   >Jakarta Selatan</option
                 >
                 <option
-                  @click="setCity('Jakarta Barat')"
                   class="text_form"
                   value="Jakarta Barat"
-                  :selected="cityName === 'Jakarta Barat'"
                   >Jakarta Barat</option
                 >
                 <option
                   @click="setCity('Jakarta Utara')"
                   class="text_form"
                   value="Jakarta Utara"
-                  :selected="cityName === 'Jakarta Utara'"
+                  selected
                   >Jakarta Utara</option
                 >
               </select>
@@ -39,70 +34,26 @@
         <div class="form">
           <i class="fas fa-search"></i>
           <input
-            v-model="inputSearch"
             class="form_search"
             placeholder="Cari nama dokter..."
           />
         </div>
       </div>
-      <h3 v-if="inputSearch.length === 0">Spesialisasi Dokter</h3>
-      <DoctorCompponent v-if="inputSearch.length === 0" />
-      <ListDoctorCard v-if="inputSearch.length > 0" />
+       <h1>Cooming Soon</h1>
     </div>
-    <router-view />
-  </div>
 </template>
 
 <script>
-import DoctorCompponent from "../components/DoctorComponent";
-import ListDoctorCard from "../components/ListDoctorCard.vue";
 export default {
-  components: {
-    DoctorCompponent,
-    ListDoctorCard,
-  },
-  data() {
-    return {
-      cityName: this.$store.state.city,
-      inputSearch: "",
-      isSearch: false,
-    };
-  },
-  watch: {
-    cityName: function() {
-      let city = this.cityName;
-      this.$store.dispatch("setCity", { city });
-      this.$store.dispatch("getDoctorData", { city });
-    },
-    inputSearch: function() {
-      let name = this.inputSearch;
-      this.$store.dispatch("getAllData", { name });
-    },
-  },
-  methods: {
-    setCity(city) {
-      this.$store.dispatch("setCity", { city });
-    },
-  },
-  created() {
-    let city = this.cityName;
-    this.$store.dispatch("getDoctorData", { city });
-  },
-};
+
+}
 </script>
 
 <style scoped>
-.container {
-  background-color: #f6f7f8;
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
 
-.doctorPage_container {
+.booking-container {
   width: 500px;
-  margin: 0 37vw;
+  margin: 0 35vw;
 }
 
 .top_page {
@@ -192,9 +143,14 @@ h3 {
   text-decoration: none;
 }
 
+.booking-container > h1 {
+    margin-top: 3cm;
+    margin-left: 4cm;
+}
+
 @media (max-width: 800px) {
-  .doctorPage_container {
-    margin: 0 40vw 0 5vw;
+  .booking-container {
+    margin: 0 2vw;
   }
 }
 </style>

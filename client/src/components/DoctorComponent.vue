@@ -1,53 +1,52 @@
 <template>
   <div>
-    <router-link id="router" v-bind:to="{ name: 'DoctorList' }">
-      <div class="doctor_card" @click="getData('Dokter Umum')">
-        <div class="doctor_card_text">
-          <h3 class="text1">Dokter Umum</h3>
-          <p class="text2">Praktisi Umum</p>
+    <div class="doctor_component">
+      <router-link id="router" to="/doctor/doctor_umum">
+        <div class="doctor_card" @click="getData('Dokter Umum')">
+          <div class="doctor_card_text">
+            <h3 class="text1">Dokter Umum</h3>
+            <p class="text2">Praktisi Umum</p>
+          </div>
+          <i class="fas fa-angle-right icon"></i>
         </div>
-        <i class="fas fa-angle-right icon"></i>
-      </div>
-    </router-link>
-    <router-link id="router" v-bind:to="{ name: 'DoctorList' }">
-      <div class="doctor_card" @click="getData('Dokter Gigi')">
-        <div class="doctor_card_text">
-          <h3 class="text1">Dokter Gigi</h3>
-          <p class="text2">Praktisi gigi, rongga mulut dan rahang</p>
+      </router-link>
+      <router-link id="router" to="/doctor/doctor_gigi">
+        <div class="doctor_card" @click="getData('Dokter Gigi')">
+          <div class="doctor_card_text">
+            <h3 class="text1">Dokter Gigi</h3>
+            <p class="text2">Praktisi gigi, rongga mulut dan rahang</p>
+          </div>
+          <i class="fas fa-angle-right icon"></i>
         </div>
-        <i class="fas fa-angle-right icon"></i>
-      </div>
-    </router-link>
-    <router-link id="router" v-bind:to="{ name: 'DoctorList' }">
-      <div class="doctor_card" @click="getData('Dokter Spesialis Jantung')">
-        <div class="doctor_card_text">
-          <h3 class="text1">Dokter Spesialis Jantung</h3>
-          <p class="text2">Kardiologi</p>
+      </router-link>
+      <router-link id="router" to="/doctor/kardiologi">
+        <div class="doctor_card" @click="getData('Dokter Spesialis Jantung')">
+          <div class="doctor_card_text">
+            <h3 class="text1">Dokter Spesialis Jantung</h3>
+            <p class="text2">Kardiologi</p>
+          </div>
+          <i class="fas fa-angle-right icon"></i>
         </div>
-        <i class="fas fa-angle-right icon"></i>
-      </div>
-    </router-link>
-    <router-link id="router" v-bind:to="{ name: 'DoctorList' }">
-      <div
-        class="doctor_card"
-        @click="getData('Dokter Spesialis Kulit dan Kelamin')"
-      >
-        <div class="doctor_card_text">
-          <h3 class="text1">Dokter Spesialis Kulit dan Kelamin</h3>
-          <p class="text2">Dermatologi</p>
+      </router-link>
+      <router-link id="router" to="/doctor/dermatologi">
+        <div class="doctor_card" @click="getData('Dokter Spesialis Kulit dan Kelamin')">
+          <div class="doctor_card_text">
+            <h3 class="text1">Dokter Spesialis Kulit dan Kelamin</h3>
+            <p class="text2">Dermatologi</p>
+          </div>
+          <i class="fas fa-angle-right icon"></i>
         </div>
-        <i class="fas fa-angle-right icon"></i>
-      </div>
-    </router-link>
-    <router-link id="router" v-bind:to="{ name: 'DoctorList' }">
-      <div class="doctor_card" @click="getData('Dokter Spesialis THT')">
-        <div class="doctor_card_text">
-          <h3 class="text1">Dokter Spesialis THT</h3>
-          <p class="text2">Otolaringologi</p>
+      </router-link>
+      <router-link id="router" to="/doctor/otolaringologi">
+        <div class="doctor_card" @click="getData('Dokter Spesialis THT')">
+          <div class="doctor_card_text">
+            <h3 class="text1">Dokter Spesialis THT</h3>
+            <p class="text2">Otolaringologi</p>
+          </div>
+          <i class="fas fa-angle-right icon"></i>
         </div>
-        <i class="fas fa-angle-right icon"></i>
-      </div>
-    </router-link>
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -61,8 +60,8 @@ export default {
     getData(field) {
       this.$store.dispatch("setField", { field });
       this.$store.dispatch("getDataByField");
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -70,11 +69,13 @@ export default {
 .doctor_card {
   background-color: white;
   display: grid;
-  width: 435px;
+  width: 500px;
   border-bottom: 2px solid #cdd1ce;
   grid-template-columns: 80% 20%;
   cursor: pointer;
+  padding: 20px;
 }
+
 .doctor_card_text {
   margin: 0px 15px;
   font-family: "Source Sans Pro", sans-serif;

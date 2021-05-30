@@ -15,10 +15,10 @@
           <li>Jadwal</li>
         </div>
         <div>
-          <router-link v-bind:to="{ name: 'Payment' }">
-            <b-icon class="icon" font-scale="2" icon="wallet2" variant="success"></b-icon>
+          <router-link v-bind:to="{ name: 'Article' }">
+            <b-icon class="icon" font-scale="2" icon="book" variant="success"></b-icon>
           </router-link>
-          <li>Bayar</li>
+          <li>Artikel</li>
         </div>
         <div>
           <router-link v-bind:to="{ name: 'Profile' }">
@@ -41,10 +41,9 @@
   list-style-type: none;
   background-color: white;
   height: 80px;
-  bottom: 0;
   margin-bottom: 0;
   position: fixed;
-  width: 99%;
+  width: 100%;
   flex-wrap: wrap;
   padding: 0;
 }
