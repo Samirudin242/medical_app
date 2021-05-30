@@ -1,4 +1,4 @@
-<img src="./client/src/img/Apps.png">
+<img style="height: 500px" src="./client/src/img/Apps.png">
 
 # Project Setup
 
