@@ -1,4 +1,4 @@
-<img src="https://drive.google.com/file/d/1BEhuvR5xOtXOgeqSUs-flZ2QKJt6StE_/view?usp=sharing">
+<img src="./client/src/img/Apps.png">
 
 # Project Setup
 
