@@ -370,5 +370,8 @@ export default {
   .card {
     margin: 0 6vw;
   } 
+  .alert {
+  margin: 24vw 20vw;
+  }
 }
 </style>
