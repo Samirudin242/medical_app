@@ -345,8 +345,7 @@ export default {
   padding: 4px;
   border-radius: 3px;
 }
-.date-information > span {
-}
+
 .date-picker {
   display: grid;
   grid-template-columns: 10% 25% 40% 35%;
@@ -365,5 +364,11 @@ export default {
 }
 .date-picker > i {
   color: #085b9c;
+}
+
+@media(max-width: 800px) {
+  .card {
+    margin: 0 6vw;
+  } 
 }
 </style>
